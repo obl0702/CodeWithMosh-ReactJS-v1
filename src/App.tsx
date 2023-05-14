@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LessonListItem from './lessons/LessonListItem'
 import LessonAlert from './lessons/LessonAlert'
 import LessonButton from './lessons/LessonButton'
@@ -6,22 +6,19 @@ import LessonSharingState from './lessons/LessonSharingState'
 import LessonExpandableText from './lessons/LessonExpandableText'
 import LessonForm01 from './lessons/LessonForm01'
 import "./index.css"
-import ExpenseList from './expense-tracker/components/ExpenseList'
+import ExpenseTracker from './expense-tracker/components/MainApp'
+import TableMultiSelect from './components/TableMultiSelect'
+
+
 
 
 const App = () => {
 
-  const [expenses, setExpenses] = useState([
-    {id: 1, description: 'aaa', amount: 10, category: 'Utilities'},
-    {id: 2, description: 'bbb', amount: 10, category: 'Utilities'},
-    {id: 3, description: 'ccc', amount: 10, category: 'Utilities'}
-  ]);
-
   return (
     <>
       <div>
-        <ExpenseList expenses={expenses} 
-        onDelete={(id) => setExpenses(expenses.filter(e => e.id !== id))}/>
+        <TableMultiSelect/>
+        {/**<ExpenseTracker/> */}
       </div>
       
       
