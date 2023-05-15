@@ -82,6 +82,30 @@ const TableMultiSelect = () => {
 
     console.log("Selected Items:", selectedItems);
     // Perform your update logic here
+
+    //Map to number[]
+    const selectedIds = selectedItems.map((item) => item.id);
+    console.log("selectedIds:", selectedIds);
+
+    const updatedDataItem = updateStatusInDataItem(data, selectedIds, "Annulled");
+    console.log(updatedDataItem);
+    
+  };
+
+  /**
+   * Updates the status of items in the data array based on the selected IDs.
+   * Returns a new array with the updated items.
+   * 
+   * @param data The array of items to update.
+   * @param selectedIds The selected IDs to check for status update.
+   * @param status The new status to assign to the selected items.
+   * @returns A new array with the updated items.
+   */
+  const updateStatusInDataItem = (data: DataItem[], selectedIds: number[], status: string) => {
+    return data.map((item) => ({
+      ...item,
+      status: selectedIds.includes(item.id) ? status : item.status,
+    }));
   };
 
   const performUpdate = (selectedItems: DataItem[]): void => {
