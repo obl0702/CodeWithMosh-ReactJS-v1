@@ -83,9 +83,12 @@ const TableMultiSelect = () => {
     console.log("Selected Items:", selectedItems);
     // Perform your update logic here
 
+
     //Map to number[]
     const selectedIds = selectedItems.map((item) => item.id);
     console.log("selectedIds:", selectedIds);
+
+    performUpdate(selectedIds);
 
     const updatedDataItem = updateStatusInDataItem(data, selectedIds, "Annulled");
     console.log(updatedDataItem);
@@ -108,20 +111,20 @@ const TableMultiSelect = () => {
     }));
   };
 
-  const performUpdate = (selectedItems: DataItem[]): void => {
-    fetch('/api/updateItems', {
+  const performUpdate = (selectedIds: number[]): void => {
+    fetch('http://localhost:8080/api/updateItems', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(selectedItems),
+      body: JSON.stringify(selectedIds),
     })
       .then((response) => response.json())
       .then((data) => {
         // Handle the API response
         console.log('Update Successful:', data);
-        fetchData();
-        showSuccessNotification();
+        //fetchData();
+        //showSuccessNotification();
       })
       .catch((error) => {
         // Handle API error
