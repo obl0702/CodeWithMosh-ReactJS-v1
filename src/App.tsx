@@ -17,11 +17,10 @@ const App = () => {
   return (
     <>
       <div>
-        <TableMultiSelect/>
-        {/**<ExpenseTracker/> */}
+        <ExpenseTracker/>
       </div>
       
-      
+      {/**<TableMultiSelect/> */}
       {/*<LessonListItem/>*/}
       {/*<LessonAlert/>*/}
       {/**<LessonButton/> */}
